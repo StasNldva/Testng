@@ -40,4 +40,11 @@ public class StaticDataProvider {
                 {900, 1.67609125906}
         };
     }
+
+    @DataProvider(name = "dataMinIndex")
+    public static Object[][] createMinIndex() {
+        return new Object[][]{
+                {200}
+        };
+    }
 }

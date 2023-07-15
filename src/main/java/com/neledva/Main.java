@@ -1,5 +1,6 @@
 package com.neledva;
 
+import java.util.Arrays;
 import java.util.stream.DoubleStream;
 
 public class Main {
@@ -30,5 +31,43 @@ public class Main {
 
     public double[] fillArrY(double[] x) {
         return DoubleStream.of(x).map(this::solveEquation).toArray();
+    }
+
+    double sumArr(double[] y){
+        /*double sum = 0;
+        for (double v : y) {
+            sum += v;
+        }
+        return sum;*/
+        return Arrays.stream(y).sum();
+    }
+
+    double averageOfArr(double[] y){
+        return Arrays.stream(y).average().orElse(0);
+        //return sumArr(y)/ y.length;
+    }
+
+    public int findIndexOfMax(double[] arr) {
+        double max = arr[0];
+        int maxIndex = 0;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
+    }
+
+    public int findIndexOfMin(double[] arr) {
+        double min = arr[0];
+        int minIndex = 0;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+                minIndex = i;
+            }
+        }
+        return minIndex;
     }
 }

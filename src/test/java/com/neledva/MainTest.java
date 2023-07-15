@@ -4,6 +4,8 @@ import org.assertj.core.data.Offset;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.Collections;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MainTest {
@@ -12,10 +14,14 @@ public class MainTest {
     private final double start = 0.1;
     private final double end = 1.0;
     private final double delta = 0.001;
+    private double[] x;
+    private double[] y;
     Main main;
     @BeforeMethod
     public void setUp() {
         main = new Main();
+        x = main.fillArrX(start, end, delta);
+        y = main.fillArrY(x);
     }
 
     @Test(dataProvider = "dataForSolveEquation", dataProviderClass = StaticDataProvider.class)
@@ -32,14 +38,45 @@ public class MainTest {
 
     @Test(dataProvider = "dataForFillArrX", dataProviderClass = StaticDataProvider.class)
     public void testFillArrX(int index, double expected){
-        double[] x = main.fillArrX(start, end, delta);
+        //double[] x = main.fillArrX(start, end, delta);
         assertThat(x[index]).isCloseTo(expected, Offset.offset(EPS));
     }
 
     @Test(dataProvider = "dataForFillArrY", dataProviderClass = StaticDataProvider.class)
     public void testFillArrY(int index, double expected){
-        double[] x = main.fillArrX(start, end, delta);
-        double[] y = main.fillArrY(x);
+        //double[] x = main.fillArrX(start, end, delta);
+        //double[] y = main.fillArrY(x);
         assertThat(y[index]).isCloseTo(expected, Offset.offset(EPS));
+    }
+
+    @Test
+    public void testSumArr() {
+        double actual = 657.0096568937329;
+        //double[] x = main.fillArrX(start, end, delta);
+        //double[] y = main.fillArrY(x);
+        double expected = main.sumArr(y);
+        assertThat(actual).isCloseTo(expected, Offset.offset(EPS));
+    }
+
+    @Test
+    public void testAverageOfArr() {
+        double actual = 0.7292005070962629;
+        //double[] x = main.fillArrX(start, end, delta);
+        //double[] y = main.fillArrY(x);
+        double expected = main.averageOfArr(y);
+        assertThat(actual).isCloseTo(expected, Offset.offset(EPS));
+    }
+
+    @Test(dataProvider = "dataMinIndex", dataProviderClass = StaticDataProvider.class)
+    public void testFindMinNum(int expectedIndex){
+        int actualIndex = main.findIndexOfMin(y);
+        assertThat(actualIndex).isEqualTo(expectedIndex);
+    }
+
+    @Test
+    public void testFindMaxNum(){
+        int expectedIndex = 900;
+        int actualIndex = main.findIndexOfMax(y);
+        assertThat(actualIndex).isEqualTo(expectedIndex);
     }
 }
