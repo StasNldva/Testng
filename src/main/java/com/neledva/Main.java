@@ -33,7 +33,7 @@ public class Main {
         return DoubleStream.of(x).map(this::solveEquation).toArray();
     }
 
-    double sumArr(double[] y){
+    double sumArr(double[] y) {
         /*double sum = 0;
         for (double v : y) {
             sum += v;
@@ -42,7 +42,7 @@ public class Main {
         return Arrays.stream(y).sum();
     }
 
-    double averageOfArr(double[] y){
+    double averageOfArr(double[] y) {
         return Arrays.stream(y).average().orElse(0);
         //return sumArr(y)/ y.length;
     }
@@ -69,5 +69,13 @@ public class Main {
             }
         }
         return minIndex;
+    }
+
+    public void showMinIndex(double[] x, double[] y, int index) {
+        System.out.println("x[" + index + "] " + x[index] + "y[" + index + "]" + y[index]);
+    }
+
+    public void showMaxIndex(double[] x, double[] y, int index) {
+        System.out.println("x[" + index + "] " + x[index] + "y[" + index + "]" + y[index]);
     }
 }

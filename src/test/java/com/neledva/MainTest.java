@@ -4,22 +4,20 @@ import org.assertj.core.data.Offset;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.Collections;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MainTest {
 
     private final static double EPS = 1e-6;
-    private final double start = 0.1;
-    private final double end = 1.0;
-    private final double delta = 0.001;
     private double[] x;
     private double[] y;
     Main main;
     @BeforeMethod
     public void setUp() {
         main = new Main();
+        double start = 0.1;
+        double end = 1.0;
+        double delta = 0.001;
         x = main.fillArrX(start, end, delta);
         y = main.fillArrY(x);
     }
