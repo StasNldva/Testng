@@ -9,7 +9,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MainTest {
 
     private final static double EPS = 1e-6;
-    private final static double b = 1.5;
+    private final double start = 0.1;
+    private final double end = 1.0;
+    private final double delta = 0.001;
     Main main;
     @BeforeMethod
     public void setUp() {
@@ -26,5 +28,18 @@ public class MainTest {
     public void testFindCountOfSteps(double xMin, double xMax, double deltaX, int expected){
         int actual = main.findCountOfSteps(xMin, xMax, deltaX);
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test(dataProvider = "dataForFillArrX", dataProviderClass = StaticDataProvider.class)
+    public void testFillArrX(int index, double expected){
+        double[] x = main.fillArrX(start, end, delta);
+        assertThat(x[index]).isCloseTo(expected, Offset.offset(EPS));
+    }
+
+    @Test(dataProvider = "dataForFillArrY", dataProviderClass = StaticDataProvider.class)
+    public void testFillArrY(int index, double expected){
+        double[] x = main.fillArrX(start, end, delta);
+        double[] y = main.fillArrY(x);
+        assertThat(y[index]).isCloseTo(expected, Offset.offset(EPS));
     }
 }
