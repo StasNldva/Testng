@@ -11,4 +11,8 @@ public class Main {
             return bx + Math.log10(bx);
         }
     }
+
+    public int findCountOfSteps(double xMin, double xMax, double deltaX) {
+        return (int) (Math.round((xMax-xMin)/deltaX) + 1);
+    }
 }

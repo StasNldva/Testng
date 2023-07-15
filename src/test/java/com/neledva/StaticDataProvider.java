@@ -13,4 +13,13 @@ public class StaticDataProvider {
             {1.0, 1.67609125906}
         };
     }
+
+    @DataProvider(name = "dataForSteps")
+    public static Object[][] createDataForSteps(){
+        return new Object[][]{
+                {0.1, 0.1, 0.001, 1},
+                {0.1, 0.3, 0.001, 201},
+                {0.1, 1.0, 0.001, 901},
+        };
+    }
 }

@@ -21,4 +21,10 @@ public class MainTest {
         double actual = main.solveEquation(x);
         assertThat(actual).isCloseTo(expected, Offset.offset(EPS));
     }
+
+    @Test(dataProvider = "dataForSteps", dataProviderClass = StaticDataProvider.class)
+    public void testFindCountOfSteps(double xMin, double xMax, double deltaX, int expected){
+        int actual = main.findCountOfSteps(xMin, xMax, deltaX);
+        assertThat(actual).isEqualTo(expected);
+    }
 }
