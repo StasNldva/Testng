@@ -34,17 +34,11 @@ public class Main {
     }
 
     double sumArr(double[] y) {
-        /*double sum = 0;
-        for (double v : y) {
-            sum += v;
-        }
-        return sum;*/
         return Arrays.stream(y).sum();
     }
 
     double averageOfArr(double[] y) {
         return Arrays.stream(y).average().orElse(0);
-        //return sumArr(y)/ y.length;
     }
 
     public int findIndexOfMax(double[] arr) {
@@ -72,10 +66,31 @@ public class Main {
     }
 
     public void showMinIndex(double[] x, double[] y, int index) {
-        System.out.println("x[" + index + "] " + x[index] + "y[" + index + "]" + y[index]);
+        System.out.println("x[" + index + "] " + x[index] + "   y[" + index + "]" + y[index]);
     }
 
     public void showMaxIndex(double[] x, double[] y, int index) {
-        System.out.println("x[" + index + "] " + x[index] + "y[" + index + "]" + y[index]);
+        System.out.println("x[" + index + "] " + x[index] + "   y[" + index + "]" + y[index]);
+    }
+
+    public static void main(String[] args) {
+        Main main = new Main();
+        double start = 0.0;
+        double end = 10.0;
+        double delta = 0.1;
+
+        double[] x = main.fillArrX(start, end, delta);
+        double[] y = main.fillArrY(x);
+
+        int indexOfMax = main.findIndexOfMax(y);
+        int indexOfMin = main.findIndexOfMin(y);
+
+        System.out.println("Array X: " + Arrays.toString(x));
+        System.out.println("Array Y: " + Arrays.toString(y));
+        System.out.println("Sum of Y: " + main.sumArr(y));
+        System.out.println("Average of Y: " + main.averageOfArr(y));
+
+        main.showMinIndex(x, y, indexOfMin);
+        main.showMaxIndex(x, y, indexOfMax);
     }
 }

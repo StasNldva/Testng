@@ -36,22 +36,17 @@ public class MainTest {
 
     @Test(dataProvider = "dataForFillArrX", dataProviderClass = StaticDataProvider.class)
     public void testFillArrX(int index, double expected){
-        //double[] x = main.fillArrX(start, end, delta);
         assertThat(x[index]).isCloseTo(expected, Offset.offset(EPS));
     }
 
     @Test(dataProvider = "dataForFillArrY", dataProviderClass = StaticDataProvider.class)
     public void testFillArrY(int index, double expected){
-        //double[] x = main.fillArrX(start, end, delta);
-        //double[] y = main.fillArrY(x);
         assertThat(y[index]).isCloseTo(expected, Offset.offset(EPS));
     }
 
     @Test
     public void testSumArr() {
         double actual = 657.0096568937329;
-        //double[] x = main.fillArrX(start, end, delta);
-        //double[] y = main.fillArrY(x);
         double expected = main.sumArr(y);
         assertThat(actual).isCloseTo(expected, Offset.offset(EPS));
     }
@@ -59,8 +54,6 @@ public class MainTest {
     @Test
     public void testAverageOfArr() {
         double actual = 0.7292005070962629;
-        //double[] x = main.fillArrX(start, end, delta);
-        //double[] y = main.fillArrY(x);
         double expected = main.averageOfArr(y);
         assertThat(actual).isCloseTo(expected, Offset.offset(EPS));
     }
